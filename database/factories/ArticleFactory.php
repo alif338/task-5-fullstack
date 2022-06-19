@@ -18,7 +18,7 @@ class ArticleFactory extends Factory
     {
         return [
             "title" => $this->faker->sentence,
-            "content" => $this->faker->paragraph,
+            "content" => $this->faker->paragraph($nbSentences = 10, $variableNbSentences = true),
             "image" => 'https://via.placeholder.com/640x480',
             "user_id" => rand(1, 5),
             "category_id" => rand(1, 5),
