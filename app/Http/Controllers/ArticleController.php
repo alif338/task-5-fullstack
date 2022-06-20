@@ -17,6 +17,12 @@ class ArticleController extends Controller
     {
         return Article::find($id);
     }
+    
+    public function showMyArticles()
+    {
+        $articles = Article::where('user_id', auth()->user()->id)->get();
+        return view('my_article', compact('articles'));
+    }
 
     public function create(Request $request)
     {
