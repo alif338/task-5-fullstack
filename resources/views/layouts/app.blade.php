@@ -33,13 +33,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link {{ !(str_contains(Route::currentRouteName(), 'my_article') || str_contains(Route::currentRouteName(), 'category_list')) ? 'active' : '' }}" aria-current="page" href="{{ route('home')}}">Semua Artikel</a>
+                            <a class="nav-link {{ str_contains(Route::currentRouteName(), 'articles') ? 'active' : '' }}" aria-current="page" href="{{ route('articles.index')}}">Semua Artikel</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ str_contains(Route::currentRouteName(), 'my_article') ? 'active' : '' }}" href="{{ route('my_article')}}">Artikel saya</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ str_contains(Route::currentRouteName(), 'category_list') ? 'active' : '' }}" href="{{ route('category_list')}}">List Kategori</a>
+                            <a class="nav-link {{ str_contains(Route::currentRouteName(), 'categories') ? 'active' : '' }}" href="{{ route('categories.index')}}">List Kategori</a>
                         </li>
                     </ul>
                     @endauth

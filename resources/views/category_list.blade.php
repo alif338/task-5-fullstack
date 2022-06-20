@@ -22,7 +22,7 @@
                     <tr>
                         <th scope="row">{{ $category->id }}</th>
                         <td>{{ $category->name }}</td>
-                        <td>{{ $category->user->name }}</td>
+                        <td>{{ $category->user->name == auth()->user()->name ? "YOU" : $category->user->name}}</td>
                         <td>{{ $category->articles->count() }}</td>
                         <td>
                             <a href="" class="btn btn-primary">Edit</a>

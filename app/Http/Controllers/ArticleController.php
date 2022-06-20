@@ -12,10 +12,11 @@ class ArticleController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        return Article::all();
+        $articles = Article::all();
+        return view('article_list', compact('articles'));
     }
 
     public function show($id)

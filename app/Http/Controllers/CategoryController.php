@@ -11,13 +11,8 @@ class CategoryController extends Controller
     {
         $this->middleware('auth');
     }
-    
-    public function index()
-    {
-        return Category::all();
 
-    }
-    public function showCategoryList()
+    public function index()
     {
         $categories = Category::all();
         return view('category_list', compact('categories'));

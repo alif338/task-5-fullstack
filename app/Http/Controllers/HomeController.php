@@ -26,9 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        // return view('home');
-        return view('home', compact('articles'));
+        return redirect()->route('articles.index');
     }
 
 }
