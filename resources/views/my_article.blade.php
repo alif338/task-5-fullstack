@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="row mb-3">
-            <button type="button" class="btn btn-primary" href="" style="width: fit-content; margin-right: 10px">Buat Artikel</a>
+            <button type="button" class="btn btn-secondary" href="" style="width: fit-content; margin-right: 10px">Buat Artikel</a>
         </div>
           @forEach($articles as $article)
               <div class="card card-spacer">

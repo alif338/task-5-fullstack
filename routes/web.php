@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/home/my_article', [App\Http\Controllers\ArticleController::class, 'showMyArticles'])->name('my_article');
+
+Route::get('/home/category_list', [App\Http\Controllers\CategoryController::class, 'showCategoryList'])->name('category_list');

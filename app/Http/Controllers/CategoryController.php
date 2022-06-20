@@ -7,11 +7,20 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         return Category::all();
 
+    }
+    public function showCategoryList()
+    {
+        $categories = Category::all();
+        return view('category_list', compact('categories'));
     }
 
     public function show($id)
