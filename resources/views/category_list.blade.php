@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="row mb-3">
-                <button type="button" class="btn btn-secondary" href="" style="width: fit-content; margin-right: 10px">Buat kategori</a>
+                <a class="btn btn-secondary" href="{{route('cr_category')}}" style="width: fit-content; margin-right: 10px">Buat kategori</a>
             </div>
             <table class="table">
                 <thead>

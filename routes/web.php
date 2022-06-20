@@ -22,10 +22,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
 Route::get('/home/my_article', [ArticleController::class, 'showMyArticles'])->name('my_article');
+Route::get('/home/cr_article', [ArticleController::class, 'createForm'])->name('cr_article');
+Route::get('/home/cr_category', [CategoryController::class, 'createForm'])->name('cr_category');
 
-Route::get('/home/category_list', [CategoryController::class, 'showCategoryList'])->name('category_list');
+Route::get('/home/cr_article/{id}', [ArticleController::class, 'updateForm'])->name('up_article');
+Route::get('/home/cr_category/{id}', [CategoryController::class, 'updateForm'])->name('up_category');
 
 Route::resources([
     'articles' => ArticleController::class,

@@ -23,10 +23,21 @@ class CategoryController extends Controller
         return Category::find($id);
     }
 
-    public function create(Request $request)
+    public function createForm()
+    {
+        return view('forms.cr_category');
+    }
+
+    public function store(Request $request)
     {
         $category = Category::create($request->all());
         return response()->json($category, 201);
+    }
+
+    public function updateForm($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('forms.cr_category', compact('category'));
     }
 
     public function update($id, Request $request)

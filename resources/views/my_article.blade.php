@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="row mb-3">
-            <button type="button" class="btn btn-secondary" href="" style="width: fit-content; margin-right: 10px">Buat Artikel</a>
+            <a class="btn btn-secondary" href="{{ route('cr_article') }}" style="width: fit-content; margin-right: 10px">Buat Artikel</a>
         </div>
           @forEach($articles as $article)
               <div class="card card-spacer">
@@ -19,9 +19,9 @@
 
                       <div class="row mt-3">
                           <div class="col-md-8 offset-md-10">
-                              <button type="button" class="btn btn-info">
+                              <a class="btn btn-info" href="{{ route('articles.edit', ['article' => $article])}}">
                                   {{ __('Edit') }}
-                              </button>
+                              </a>
                               <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                   {{ __('Delete') }}
                               </button>
