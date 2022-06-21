@@ -24,12 +24,12 @@
                               <a class="btn btn-info" href="{{ route('articles.edit', ['article' => $article])}}">
                                   {{ __('Edit') }}
                               </a>
-                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$article->id}}">
                                   {{ __('Delete') }}
                               </button>
 
                               <!-- Modal Delete -->
-                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="exampleModal-{{$article->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -41,8 +41,12 @@
                                       <b> {{ $article->title }} </b>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-                                      <button type="button" class="btn btn-primary">batal</button>
+                                      <form id="article-{{$article->id}}" method="POST" action="{{route('articles.destroy', ['article' => $article])}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
+                                      </form>
+                                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">batal</button>
                                     </div>
                                   </div>
                                 </div>

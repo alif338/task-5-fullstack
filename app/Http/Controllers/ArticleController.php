@@ -58,6 +58,7 @@ class ArticleController extends Controller
     
     public function update($id, Request $request)
     {
+        dd($id);
         $article = Article::findOrFail($id);
         $data = array_merge($request->all(), ['user_id' => auth()->user()->id]);
         $data['image'] = 'https://via.placeholder.com/500x300';
@@ -66,9 +67,10 @@ class ArticleController extends Controller
         return redirect('/articles')->with('status', 'Berhasil mengupdate artikel');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        Article::findOrFail($id)->delete();
-        return response('Deleted Successfully', 200);
+        $article = Article::find($id);
+        $article->delete();
+        return redirect('/articles')->with('status', 'Berhasil menghapus artikel');
     }
 }

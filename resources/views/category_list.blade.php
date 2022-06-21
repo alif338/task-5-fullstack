@@ -33,9 +33,9 @@
                         <td>
                           @if($category->user->id == auth()->user()->id)
                             <a href="{{route('categories.edit', ['category' => $category])}}" class="btn btn-primary">Edit</a>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-{{$category->id}}">Delete</button>
                             <!-- Modal Delete -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal-{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -44,11 +44,15 @@
                                     </div>
                                     <div class="modal-body">
                                       Apakah anda yakin ingin menghapus Kategori ini? <br><br>
-                                      <b> {{ $category->name }} </b>
+                                      <b>Aksi ini akan menghapus SEMUA artikel yang berketegori: {{ $category->name }} </b>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-                                      <button type="button" class="btn btn-primary">batal</button>
+                                      <form method="POST" action="{{route('categories.destroy', ['category' => $category])}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
+                                      </form>
+                                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">batal</button>
                                     </div>
                                   </div>
                                 </div>

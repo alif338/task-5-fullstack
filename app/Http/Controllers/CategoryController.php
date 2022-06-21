@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Article;
 
 class CategoryController extends Controller
 {
@@ -48,9 +49,12 @@ class CategoryController extends Controller
         return redirect('/categories')->with('status', 'Berhasil Update kategori');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        Category::findOrFail($id)->delete();
-        return response('Deleted Successfully', 200);
+        $article = Article::where('category_id', $id);
+        $category = Category::findOrFail($id);
+        $article->delete();
+        $category->delete();
+        return redirect('/categories')->with('status', 'Berhasil menghapus kategori');
     }
 }
