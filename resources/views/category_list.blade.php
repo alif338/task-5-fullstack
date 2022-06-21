@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session('status'))
+<div class="alert alert-success alert-dismissible fade show mx-4" role="alert">
+  <strong>Success!</strong> {{session('status')}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="row mb-3">
-                <a class="btn btn-secondary" href="{{route('cr_category')}}" style="width: fit-content; margin-right: 10px">Buat kategori</a>
+                <a class="btn btn-secondary" href="{{route('categories.create')}}" style="width: fit-content; margin-right: 10px">Buat kategori</a>
             </div>
             <table class="table">
                 <thead>
@@ -25,7 +31,8 @@
                         <td>{{ $category->user->name == auth()->user()->name ? "YOU" : $category->user->name}}</td>
                         <td>{{ $category->articles->count() }}</td>
                         <td>
-                            <a href="" class="btn btn-primary">Edit</a>
+                          @if($category->user->id == auth()->user()->id)
+                            <a href="{{route('categories.edit', ['category' => $category])}}" class="btn btn-primary">Edit</a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
                             <!-- Modal Delete -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -46,6 +53,7 @@
                                   </div>
                                 </div>
                               </div>
+                              @endif
                         </td>
                     </tr>
                     @endforeach

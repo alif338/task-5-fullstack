@@ -23,28 +23,29 @@ class CategoryController extends Controller
         return Category::find($id);
     }
 
-    public function createForm()
+    public function create()
     {
         return view('forms.cr_category');
     }
 
     public function store(Request $request)
     {
-        $category = Category::create($request->all());
-        return response()->json($category, 201);
+        $data = array_merge($request->all(), ['user_id' => auth()->user()->id]);
+        Category::create($data);
+        return redirect('/categories')->with('status', 'Berhasil menambahkan kategori');
     }
 
-    public function updateForm($id)
+    public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('forms.cr_category', compact('category'));
+        return view('forms.up_category', compact('category'));
     }
 
     public function update($id, Request $request)
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());
-        return response()->json($category, 200);
+        return redirect('/categories')->with('status', 'Berhasil Update kategori');
     }
 
     public function delete($id)

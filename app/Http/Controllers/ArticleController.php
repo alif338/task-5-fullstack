@@ -31,7 +31,7 @@ class ArticleController extends Controller
         return view('my_article', compact('articles'));
     }
 
-    public function createForm()
+    public function create()
     {
         $selectedID = null;
         $categories = Category::all();
@@ -43,7 +43,7 @@ class ArticleController extends Controller
         $data = array_merge($request->all(),['user_id' => auth()->user()->id]);
         $data['image'] = 'https://via.placeholder.com/500x300';
         $data['category_id'] = (int) $data['category_id'];
-        $article = Article::create($data);
+        Article::create($data);
 
         return redirect('/articles')->with('status', 'Berhasil menambahkan artikel');
     }
@@ -53,13 +53,12 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         $categories = Category::all();
         $selectedID = $article->category_id;
-        return view('forms.cr_article', compact('article', 'categories', 'selectedID'));
+        return view('forms.up_article', compact('article', 'categories', 'selectedID'));
     }
     
     public function update($id, Request $request)
     {
         $article = Article::findOrFail($id);
-        dd($request);
         $data = array_merge($request->all(), ['user_id' => auth()->user()->id]);
         $data['image'] = 'https://via.placeholder.com/500x300';
         $data['category_id'] = (int) $data['category_id'];

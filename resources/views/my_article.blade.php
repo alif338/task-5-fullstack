@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="row mb-3">
-            <a class="btn btn-secondary" href="{{ route('cr_article') }}" style="width: fit-content; margin-right: 10px">Buat Artikel</a>
+            <a class="btn btn-secondary" href="{{ route('articles.create') }}" style="width: fit-content; margin-right: 10px">Buat Artikel</a>
         </div>
           @forEach($articles as $article)
               <div class="card card-spacer">
@@ -16,6 +16,8 @@
                       <span class="badge bg-secondary mb-2 mt-2" style="width: fit-content;">{{ $article->category->name}}</span>
                       <img src={{ $article->image}} alt="sample image" class="rounded" style="width: fit-content">
                       <p>{{ $article->content }}</p>
+                      <small><strong>Tanggal dibuat: {{$article->created_at}}</strong></small>
+                        <small><strong>Tanggal di-update: {{$article->updated_at}}</strong></small>
 
                       <div class="row mt-3">
                           <div class="col-md-8 offset-md-10">

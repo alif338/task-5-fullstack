@@ -21,6 +21,8 @@
                         <span class="badge bg-secondary mb-2 mt-2" style="width: fit-content;">{{ $article->category->name}}</span>
                         <img src={{ $article->image }} alt="sample image" class="rounded" style="width: fit-content">
                         <p>{{ $article->content }}</p>
+                        <small><strong>Tanggal dibuat: {{$article->created_at}}</strong></small>
+                        <small><strong>Tanggal di-update: {{$article->updated_at}}</strong></small>
                     </div>
                 </div>
             @endForeach
