@@ -58,13 +58,12 @@ class ArticleController extends Controller
     
     public function update($id, Request $request)
     {
-        dd($id);
         $article = Article::findOrFail($id);
         $data = array_merge($request->all(), ['user_id' => auth()->user()->id]);
         $data['image'] = 'https://via.placeholder.com/500x300';
         $data['category_id'] = (int) $data['category_id'];
         $article->update($data);
-        return redirect('/articles')->with('status', 'Berhasil mengupdate artikel');
+        return redirect('/articles/my_article')->with('status', 'Berhasil mengupdate artikel');
     }
 
     public function destroy($id)
