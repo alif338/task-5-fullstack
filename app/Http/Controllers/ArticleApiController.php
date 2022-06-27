@@ -8,7 +8,11 @@ use App\Models\Category;
 
 class ArticleApiController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('article');
+    }
+
     public function index()
     {
         $articles = Article::all();
@@ -31,8 +35,6 @@ class ArticleApiController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // $data['image'] = 'https://via.placeholder.com/500x300';
-        // $data['category_id'] = (int) $data['category_id'];
         Article::create($data);
         
         return response()->json(['status' => 'Berhasil menambahkan artikel']);

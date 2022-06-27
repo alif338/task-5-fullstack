@@ -26,4 +26,6 @@ Route::prefix('v1')->group(function () {
         'categories' => CategoryApiController::class
     ]);
     Route::get('users', [UserApiController::class, 'index']);
+    Route::post('users/login', [UserApiController::class, 'login']);
+    Route::post('users/register', [UserApiController::class, 'register']);
 });
