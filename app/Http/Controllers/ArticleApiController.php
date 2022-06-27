@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class ArticleApiController extends Controller
 {
@@ -15,7 +17,7 @@ class ArticleApiController extends Controller
 
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::paginate(25); // default 25
         return response()->json($articles);
     }
     
