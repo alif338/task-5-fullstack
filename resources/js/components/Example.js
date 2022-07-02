@@ -9,7 +9,10 @@ function Example() {
                     <div className="card">
                         <div className="card-header">Example Component</div>
 
-                        <div className="card-body">I'm an example component!</div>
+                        <div className="card-body">
+                            <p>Example Component</p>
+                            <a href='http://127.0.0.1:8000/home'>Homepage</a>
+                        </div>
                     </div>
                 </div>
             </div>

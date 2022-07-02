@@ -5,14 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use Closure;
 
 class ArticleApiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('article');
+        // dd(auth()->user());
+        // $this->middleware(function(Request $request, Closure $next)
+        // {
+            // dd(auth()->user());
+        //     if ($request->headers->get('Authorization') == null) {
+        //         return response()->json(['error' => 'Unauthorized'], 401);
+        //     }
+        //     return $next($request);
+        // });
     }
 
     public function index()
